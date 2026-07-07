@@ -1,379 +1,256 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Một chút để hiểu cậu hơn</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --night:#12172B; --night-soft:#1B2140; --paper:#F7F2E7; --paper-line:#E3D9C0;
-    --ink:#22242B; --ink-soft:#5B5C63; --gold:#C89B3C; --teal:#4C8C86;
-  }
-  *{box-sizing:border-box;}
-  body{margin:0;font-family:'Inter',system-ui,sans-serif;background:radial-gradient(1200px 600px at 50% -10%, var(--night-soft), var(--night));min-height:100vh;}
-  .wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;}
-  .card{width:100%;max-width:520px;background:var(--paper);border-radius:4px;border:1px solid var(--paper-line);padding:36px 34px;box-shadow:0 30px 60px rgba(0,0,0,.35);}
-  .eyebrow{margin:0;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:var(--teal);text-transform:uppercase;}
-  h1,h2{font-family:'Fraunces',Georgia,serif;color:var(--ink);margin:10px 0 12px;}
-  h1{font-size:28px;font-weight:600;line-height:1.25;}
-  h2{font-size:20px;font-weight:500;line-height:1.5;}
-  p{color:var(--ink-soft);font-size:14.5px;line-height:1.6;margin:0 0 20px;}
-  label{display:block;font-size:13px;color:var(--ink-soft);margin-bottom:6px;}
-  input[type=text],input[type=password],textarea{
-    width:100%;padding:12px 14px;font-size:15px;border-radius:3px;border:1px solid var(--paper-line);
-    background:#FFFDF8;color:var(--ink);outline:none;font-family:'Inter',sans-serif;
-  }
-  textarea{resize:vertical;line-height:1.6;}
-  button{font-family:'Inter',sans-serif;cursor:pointer;border:none;border-radius:3px;}
-  .btn-primary{width:100%;padding:13px 0;font-size:15px;font-weight:600;color:#FFFDF8;background:var(--ink);margin-top:18px;}
-  .btn-primary:disabled{background:#B9B4A6;cursor:not-allowed;}
-  .btn-ghost{background:none;color:var(--ink-soft);font-size:12.5px;text-decoration:underline;}
-  .row{display:flex;justify-content:space-between;align-items:center;}
-  .timer{display:flex;align-items:center;gap:10px;}
-  .dial{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--gold);position:relative;flex-shrink:0;}
-  .dial .hand{position:absolute;top:50%;left:50%;width:1.5px;height:12px;background:var(--gold);transform-origin:top;transition:transform .9s linear;}
-  .dial .dot{position:absolute;top:50%;left:50%;width:4px;height:4px;border-radius:50%;background:var(--gold);transform:translate(-50%,-50%);}
-  #timerDisplay{font-family:'IBM Plex Mono',monospace;font-size:18px;color:var(--ink);min-width:52px;}
-  .qtag{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:var(--teal);}
-  .dots{display:flex;gap:5px;}
-  .dots span{width:6px;height:6px;border-radius:50%;background:var(--paper-line);display:inline-block;}
-  .dots span.done{background:var(--gold);}
-  .dots span.cur{background:var(--ink);}
-  .err{color:#B3432B;font-size:13px;margin:-10px 0 14px;}
-  .admin-wrap{padding:32px 20px;}
-  .admin-inner{max-width:800px;margin:0 auto;}
-  .admin-inner h2{color:#F7F2E7;font-size:24px;margin:0;}
-  .admin-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px;}
-  .btn-outline{padding:8px 16px;background:none;border:1px solid var(--teal);color:var(--teal);border-radius:3px;font-size:13px;}
-  .btn-outline.muted{border-color:var(--paper-line);color:#F7F2E7;}
-  .session{background:var(--paper);border-radius:4px;border:1px solid var(--paper-line);overflow:hidden;margin-bottom:10px;}
-  .session-head{width:100%;text-align:left;padding:16px 20px;background:none;display:flex;justify-content:space-between;align-items:center;}
-  .session-name{font-family:'Fraunces',serif;font-size:17px;color:var(--ink);font-weight:600;}
-  .session-meta{font-size:12.5px;color:var(--ink-soft);margin-top:2px;}
-  .session-body{padding:0 20px 18px;border-top:1px solid var(--paper-line);}
-  .qa{margin-top:16px;}
-  .qa-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;}
-  .qa-text{font-size:13px;color:var(--ink);margin:4px 0 8px;line-height:1.5;white-space:pre-wrap;}
-  .muted-note{color:#9aa0b0;}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tra Cứu Kết Quả Khảo Sát Tâm Lý</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            max-width: 700px;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        h1 {
+            color: #1a2a3a;
+            font-size: 24px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        p.subtitle {
+            color: #666;
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 15px;
+        }
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        input[type="text"] {
+            flex: 1;
+            padding: 14px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        input[type="text"]:focus {
+            border-color: #3498db;
+        }
+        button {
+            padding: 14px 24px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .error-message {
+            color: #e74c3c;
+            font-size: 14px;
+            text-align: center;
+            display: none;
+            margin-top: 5px;
+        }
+        .result-container {
+            display: none;
+            animation: fadeIn 0.5s ease forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .back-btn {
+            background-color: #7f8c8d;
+            padding: 8px 16px;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .back-btn:hover {
+            background-color: #95a5a6;
+        }
+        .content-text {
+            line-height: 1.7;
+            font-size: 16px;
+            color: #34495e;
+        }
+        .content-text p {
+            margin-bottom: 15px;
+        }
+        .section-good {
+            border-left: 4px solid #2ecc71;
+            background-color: #f4fbf7;
+            padding: 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 25px 0;
+        }
+        .section-bad {
+            border-left: 4px solid #e74c3c;
+            background-color: #fdf3f2;
+            padding: 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 25px 0;
+        }
+        h2.section-title {
+            font-size: 18px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section-good .section-title { color: #27ae60; }
+        .section-bad .section-title { color: #c0392b; }
+        h3 {
+            font-size: 16px;
+            color: #2c3e50;
+            margin: 15px 0 8px 0;
+        }
+        ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .blockquote {
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px dashed #cbd5e1;
+            margin-top: 15px;
+            font-style: italic;
+        }
+    </style>
 </head>
 <body>
-<div id="app"></div>
 
-<script>
-const FIREBASE_URL = "https://test-485b9-default-rtdb.asia-southeast1.firebasedatabase.app";
-const ADMIN_PASSWORD = "xemdapan2026";
+    <!-- KHỐI NHẬP TÊN -->
+    <div class="card" id="searchCard">
+        <h1>Hệ Thống Tra Cứu Kết Quả Khảo Sát</h1>
+        <p class="subtitle">Vui lòng nhập chính xác tên của bạn để xem phản hồi</p>
+        <div class="input-group">
+            <input type="text" id="nameInput" placeholder="Nhập tên tại đây..." onkeydown="if(event.key === 'Enter') handleSearch()">
+            <button onclick="handleSearch()">Xem kết quả</button>
+        </div>
+        <div class="error-message" id="errorMsg">Không tìm thấy dữ liệu cho tên này. Gợi ý: Hãy thử nhập "Trâm Anh".</div>
+    </div>
 
-const QUESTIONS = [
-  `Nếu cậu nhặt được một chiếc hộp khóa kín chứa đựng bí mật về tương lai của chính cậu, nhưng nếu mở nó ra, một người ngẫu nhiên nào đó trên thế giới sẽ gặp một xui xẻo nhỏ (như bị lỡ xe buýt hoặc mất ví). Cậu có mở không? Vì sao?`,
-  `Giả sử cậu đang cực kỳ áp lực và mệt mỏi (bài tập ngập đầu, mọi thứ đổ bể), hành động đầu tiên cậu làm để "sống sót" qua ngày hôm đó là gì? (Vùi đầu vào game/phim, đi ngủ, tìm ai đó tâm sự, hay ngồi vạch kế hoạch giải quyết?)`,
-  `Cậu nghĩ đặc điểm nào trong tính cách của cậu dễ khiến người mới gặp hiểu lầm nhất? Và thực chất bên trong cậu là người thế nào ở điểm đó?`,
-  `Giữa một người bạn luôn nói thật 100% dù lời thật lòng đó có thể làm cậu tổn thương, và một người luôn chọn cách nói giảm nói tránh, nhẹ nhàng để cậu không buồn, cậu sẽ chọn kết bạn thân với ai hơn?`,
-  `Nếu cãi nhau với một người cực kỳ quan trọng đối với cậu, xu hướng của cậu là muốn ngồi lại giải quyết cho ra ngô ra khoai ngay lập tức, hay cậu cần im lặng và tách ra một không gian riêng để bình tĩnh lại trước?`,
-  `Nếu có một nút bấm giúp cậu lập tức xóa sạch ký ức về một kỷ niệm buồn hoặc một sai lầm tồi tệ nhất trong quá khứ, cậu có bấm nó không?`,
-];
+    <!-- KHỐI HIỂN THỊ KẾT QUẢ -->
+    <div class="card result-container" id="resultCard">
+        <button class="back-btn" onclick="goBack()">← Quay lại</button>
+        <div class="content-text" id="resultContent">
+            <!-- Nội dung phản hồi sẽ tự động điền vào đây -->
+        </div>
+    </div>
 
-let S = {
-  view: "landing",
-  name: "",
-  sessionId: null,
-  sessionDoc: null,
-  currentQ: 1,
-  startedAt: null,
-  saving: false,
-  saveError: "",
-  pwError: "",
-  sessions: [],
-  openSession: null,
-  loadingAdmin: false,
-};
+    <script>
+        function handleSearch() {
+            const inputVal = document.getElementById('nameInput').value.trim().toLowerCase();
+            
+            // Hỗ trợ kiểm tra cả khi viết có dấu hoặc không dấu cơ bản
+            if (inputVal === "trâm anh" || inputVal === "tram anh") {
+                document.getElementById('searchCard').style.display = 'none';
+                document.getElementById('resultCard').style.display = 'block';
+                renderContent();
+            } else {
+                document.getElementById('errorMsg').style.display = 'block';
+            }
+        }
 
-let tickHandle = null;
+        function goBack() {
+            document.getElementById('searchCard').style.display = 'block';
+            document.getElementById('resultCard').style.display = 'none';
+            document.getElementById('errorMsg').style.display = 'none';
+            document.getElementById('nameInput').value = '';
+        }
 
-function fmtTime(totalSeconds) {
-  const m = Math.floor(totalSeconds / 60);
-  const s = totalSeconds % 60;
-  return String(m).padStart(2, "0") + ":" + String(s).padStart(2, "0");
-}
-function fmtDate(iso) {
-  try { return new Date(iso).toLocaleString("vi-VN"); } catch { return iso || ""; }
-}
-function newSessionId() {
-  return Date.now() + "-" + Math.random().toString(36).slice(2, 9);
-}
-function checkConfig() {
-  return FIREBASE_URL && FIREBASE_URL.indexOf("https://") === 0;
-}
-async function fbGet(path) {
-  const r = await fetch(FIREBASE_URL + "/" + path + ".json");
-  if (!r.ok) throw new Error("get failed");
-  return r.json();
-}
-async function fbPut(path, data) {
-  const r = await fetch(FIREBASE_URL + "/" + path + ".json", {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
-  });
-  if (!r.ok) throw new Error("put failed");
-  return r.json();
-}
+        function renderContent() {
+            const contentHTML = `
+                <h1>Chào Trâm Anh!</h1>
+                <p>Tớ đã đọc hết những câu trả lời khảo sát rất thật lòng của cậu. Cảm giác đầu tiên của tớ là cậu giống như một cuốn sách hay: nhẹ nhàng, có chút khép kín ở bìa ngoài nhưng càng lật giở từng trang bên trong, người ta lại càng thấy bất ngờ vì sự sâu sắc và thế giới nội tâm cực kỳ phong phú của cậu.</p>
+                <p>Dưới đây là những gì tớ "đọc vị" được về một cô gái tên Trâm Anh qua những gì cậu tự bạch nhé:</p>
+                
+                <!-- PHẦN ĐIỂM TỐT -->
+                <div class="section-good">
+                    <h2 class="section-title">✨ Góc Nhìn Tính Cách Nổi Bật</h2>
+                    
+                    <h3>1. Một tâm hồn hướng nội, "mít ướt" một cách lành mạnh</h3>
+                    <p>Cậu tự nhận mình hướng nội, nhút nhát và thích giải tỏa mọi chuyện bằng nước mắt. Nhiều người hay nghĩ khóc là yếu đuối, nhưng tớ lại thấy ngược lại:</p>
+                    <ul>
+                        <li><strong>Biết cách tự chữa lành:</strong> Cậu chọn "ở một mình và ngồi khóc cho đã rồi thôi". Đây thực ra là một cơ chế giải tỏa cảm xúc rất thông minh. Cậu không trốn tránh, không kìm nén, mà để nỗi buồn trôi ra ngoài theo những giọt nước mắt rồi mỉm cười đón nhận vì biết "chuyện sẽ qua mà".</li>
+                        <li><strong>Khao khát kết nối ngầm:</strong> Cậu ngại bắt chuyện không phải vì cậu lạnh lùng, mà chỉ vì cậu hơi rụt rè thôi. Thực chất, cậu rất muốn được trò chuyện, chia sẻ và thấu hiểu mọi người chứ không hề muốn cô lập bản thân.</li>
+                    </ul>
 
-function escapeHtml(str) {
-  return (str || "").replace(/[&<>"']/g, (c) => ({
-    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
-  }[c]));
-}
+                    <h3>2. Dễ tổn thương nhưng sở hữu "nội lực" cực kỳ bản lĩnh</h3>
+                    <p>Đây là điểm tớ ấn tượng nhất ở cậu. Cậu thừa nhận mình là người nhạy cảm, thích nghe những lời nói tránh nhẹ nhàng để không bị buồn. Thế nhưng, đằng sau sự mỏng manh đó lại là một tư duy vô cùng chín chắn:</p>
+                    <ul>
+                        <li><strong>Tư duy cầu tiến (Growth Mindset):</strong> Cậu không hề bướng bỉnh hay bảo thủ. Cậu sẵn sàng chấp nhận một người bạn nói thẳng, vì cậu "hiểu và có thể sửa". Sức mạnh của cậu nằm ở chỗ cậu biết vượt qua sự tổn thương nhất thời của cái tôi để bản thân trở nên tốt hơn.</li>
+                        <li><strong>Dũng cảm đối mặt với quá khứ:</strong> Khi đứng trước chiếc nút bấm xóa ký ức buồn, cậu đã chọn <strong>Không bấm</strong>. Cậu muốn "ghi nhớ nó và lấy nó làm bài học cho sau này". Việc cậu trân trọng cả những mảng tối, những vấp ngã trong đời chứng minh cậu là một cô gái có bản lĩnh và nghị lực lớn lao ẩn sau vẻ ngoài dịu dàng.</li>
+                    </ul>
 
-function render() {
-  const app = document.getElementById("app");
-  if (!checkConfig()) {
-    app.innerHTML =
-      '<div class="wrap"><div class="card">' +
-      '<p class="eyebrow">Chưa cấu hình</p>' +
-      "<h1>Thiếu địa chỉ lưu trữ dữ liệu</h1>" +
-      '<p>Mở file HTML này bằng trình soạn thảo, tìm dòng <code>FIREBASE_URL</code> ở gần đầu &lt;script&gt; và dán URL Realtime Database của bạn vào đó, rồi tải lại trang.</p>' +
-      "</div></div>";
-    return;
-  }
-  if (S.view === "landing") return renderLanding();
-  if (S.view === "question") return renderQuestion();
-  if (S.view === "thanks") return renderThanks();
-  if (S.view === "admin-login") return renderAdminLogin();
-  if (S.view === "admin") return renderAdmin();
-}
+                    <h3>3. Thẳng thắn trong mối quan hệ và ghét sự "chiến tranh lạnh"</h3>
+                    <p>Trong tình cảm hay các mối quan hệ quan trọng, cậu là người luôn hướng đến sự xây dựng và thấu hiểu:</p>
+                    <ul>
+                        <li>Cậu không thích kiểu im lặng bỏ lửng mâu thuẫn. Vì khi bị bỏ lại một mình, cậu rất dễ bị <strong>Overthinking</strong> (suy nghĩ quá mức), những suy nghĩ luẩn quẩn tự diễn dịch trong đầu sẽ làm cậu cực kỳ khó chịu.</li>
+                        <li>Cậu luôn chọn cách ngồi lại đối thoại để "hiểu nhau và ổn hơn". Điều này cho thấy cậu cực kỳ coi trọng mối quan hệ và luôn muốn tìm giải pháp rõ ràng, văn minh để bảo vệ tình cảm của cả hai.</li>
+                    </ul>
 
-function renderLanding() {
-  document.getElementById("app").innerHTML =
-    '<div class="wrap"><div class="card">' +
-    '<p class="eyebrow">6 câu hỏi · viết tự do</p>' +
-    "<h1>Một chút để hiểu cậu hơn</h1>" +
-    "<p>Đây là một khảo sát tự luận gồm 6 câu, mỗi câu một trang. Cứ viết thật tự nhiên — thời gian cậu viết cho từng câu sẽ được ghi lại, nhưng chỉ người tạo khảo sát này mới xem lại được câu trả lời. Sau khi nộp, cậu sẽ không thể xem lại nội dung đã viết.</p>" +
-    '<label for="nameInput">Tên của cậu</label>' +
-    '<input id="nameInput" type="text" placeholder="Nhập tên..." value="' + escapeHtml(S.name) + '" />' +
-    (S.saveError ? '<p class="err">' + escapeHtml(S.saveError) + "</p>" : "") +
-    '<button class="btn-primary" id="startBtn">Bắt đầu</button>' +
-    '<div style="text-align:center;margin-top:22px;"><button class="btn-ghost" id="adminBtn">Dành cho người tạo khảo sát</button></div>' +
-    "</div></div>";
+                    <div class="blockquote">
+                        <strong>Lời nhắn gửi riêng cho Trâm Anh:</strong> Cậu là một sự kết hợp rất đáng quý giữa sự nhạy cảm, tinh tế của một cô gái và sự chín chắn, lý trí của một người trưởng thành. Cậu có lòng trắc ẩn (luôn sợ làm tổn thương người khác), biết nghĩ cho mọi người nhưng cũng rất có ý thức hoàn thiện chính mình. Đừng bao giờ tự ti vì mình hay khóc hay nhút nhát nhé, vì chính sự chân thành và nội lực ngầm đó mới là thứ tạo nên một Trâm Anh có sức hút rất riêng.
+                    </div>
+                </div>
 
-  document.getElementById("nameInput").addEventListener("input", (e) => { S.name = e.target.value; updateStartBtnState(); });
-  document.getElementById("nameInput").addEventListener("keydown", (e) => { if (e.key === "Enter") beginSurvey(); });
-  document.getElementById("startBtn").addEventListener("click", beginSurvey);
-  document.getElementById("adminBtn").addEventListener("click", () => { S.view = "admin-login"; render(); });
-  updateStartBtnState();
-}
-function updateStartBtnState() {
-  const btn = document.getElementById("startBtn");
-  if (btn) btn.disabled = !S.name.trim();
-}
+                <!-- PHẦN ĐIỂM XẤU -->
+                <div class="section-bad">
+                    <h2 class="section-title">⚠️ Những Chiếc Bẫy Tâm Lý (Tác Dụng Phụ)</h2>
+                    <p>Thực ra, một người có thế giới nội tâm sâu sắc và nhạy cảm như cậu thường sẽ phải đối mặt với những "tác dụng phụ" khá đau đầu. Nếu tụi mình thẳng thắn với nhau như những người bạn, thì đây là những điểm yếu — hay đúng hơn là những chiếc bẫy tâm lý mà cậu rất dễ tự sa vào:</p>
+                    
+                    <h3>1. Chiếc bẫy Overthinking và sự phụ thuộc cảm xúc khi có biến</h3>
+                    <p>Cậu có xu hướng không chịu nổi việc phải ở một mình với những suy nghĩ ngổn ngang khi hai bên xảy ra mâu thuẫn ("ở một mình những suy nghĩ của bản thân làm mình rất khó chịu").</p>
+                    <p><strong>Điểm yếu ở đây là:</strong> Vì sợ cảm giác bất an đó, cậu có xu hướng muốn nói chuyện ngay để giải tỏa. Nhưng nếu đối phương lại là kiểu người cần thời gian im lặng để bình tĩnh (nhóm né tránh), việc cậu thúc ép đối thoại sẽ vô tình tạo áp lực lớn cho họ. Cậu dễ bị rơi vào trạng thái hoảng loạn, suy diễn lung tung và tự làm khổ tâm lý của chính mình trước khi vấn đề thực sự được giải quyết.</p>
 
-async function beginSurvey() {
-  const trimmed = S.name.trim();
-  if (!trimmed) return;
-  const id = newSessionId();
-  const iso = new Date().toISOString();
-  const doc = { name: trimmed, startedAt: iso, answers: {}, completed: false };
-  try {
-    await fbPut("sessions/" + id, doc);
-  } catch (e) {
-    S.saveError = "Không lưu được phiên làm bài. Kiểm tra kết nối mạng rồi thử lại.";
-    render();
-    return;
-  }
-  S.sessionId = id;
-  S.sessionDoc = doc;
-  S.currentQ = 1;
-  S.startedAt = Date.now();
-  S.saveError = "";
-  S.view = "question";
-  render();
-}
+                    <h3>2. Quá nhạy cảm dễ khiến người xung quanh phải "nhón chân" khi ở cạnh</h3>
+                    <p>Cậu tự nhận mình "vốn dễ tổn thương" và hay giải quyết mọi chuyện bằng nước mắt.</p>
+                    <p><strong>Điểm yếu ở đây là:</strong> Dù cậu nói rằng cậu sẵn sàng nghe lời nói thẳng để sửa đổi, nhưng phản ứng thực tế của cậu (buồn, khóc, tổn thương) có thể sẽ làm cho bạn bè hoặc người yêu cảm thấy áp lực. Họ sẽ có cảm giác phải "đi nhẹ, nói khẽ, cười duyên", lúc nào cũng phải lựa lời vì sợ làm cậu khóc. Sự nhạy cảm quá mức này đôi khi vô tình dựng lên một bức tường, khiến người khác e dè không dám hoàn toàn thành thật với cậu.</p>
 
-function renderQuestion() {
-  document.getElementById("app").innerHTML =
-    '<div class="wrap"><div class="card">' +
-    '<div class="row" style="margin-bottom:22px;">' +
-    '<span class="qtag">CÂU ' + S.currentQ + "/" + QUESTIONS.length + "</span>" +
-    '<div class="timer"><div class="dial"><div class="hand" id="dialHand"></div><div class="dot"></div></div>' +
-    '<span id="timerDisplay">00:00</span></div></div>' +
-    "<h2>" + escapeHtml(QUESTIONS[S.currentQ - 1]) + "</h2>" +
-    '<textarea id="answerText" rows="8" placeholder="Viết câu trả lời của cậu ở đây..."></textarea>' +
-    (S.saveError ? '<p class="err">' + escapeHtml(S.saveError) + "</p>" : "") +
-    '<div class="row" style="margin-top:18px;">' +
-    '<div class="dots">' + QUESTIONS.map((_, i) => {
-      const cls = i < S.currentQ - 1 ? "done" : i === S.currentQ - 1 ? "cur" : "";
-      return '<span class="' + cls + '"></span>';
-    }).join("") + "</div>" +
-    '<button class="btn-primary" style="width:auto;padding:11px 26px;margin-top:0;" id="submitBtn">' +
-    (S.currentQ === QUESTIONS.length ? "Nộp & hoàn tất" : "Nộp câu trả lời") +
-    "</button></div></div></div>";
+                    <h3>3. Xu hướng "gặm nhấm" nỗi buồn và tự cô lập lúc đầu</h3>
+                    <p>Khi gặp áp lực lớn, phản ứng đầu tiên của cậu là rút lui vào thế giới riêng ("ở một mình và ngồi khóc").</p>
+                    <p><strong>Điểm yếu ở đây là:</strong> Việc khóc để giải tỏa là tốt, nhưng kết hợp với việc cậu chọn giữ lại tất cả ký ức buồn để làm bài học, cậu rất dễ biến thành kiểu người hay luyến tiếc và ôm giữ quá khứ. Cậu có xu hướng tua đi tua lại những tổn thương, những lỗi lầm cũ trong đầu để "rút kinh nghiệm", nhưng thực chất là đang tự làm đau bản thân thêm nhiều lần nữa. Sự nhút nhát ban đầu cũng dễ khiến cậu bỏ lỡ những cơ hội kết bạn tốt chỉ vì không dám bước qua vòng an toàn.</p>
 
-  const ta = document.getElementById("answerText");
-  const submitBtn = document.getElementById("submitBtn");
-  function refreshBtn() { submitBtn.disabled = !ta.value.trim() || S.saving; }
-  ta.addEventListener("input", refreshBtn);
-  submitBtn.addEventListener("click", submitAnswer);
-  refreshBtn();
-
-  if (tickHandle) clearInterval(tickHandle);
-  const dial = document.getElementById("dialHand");
-  const disp = document.getElementById("timerDisplay");
-  function tick() {
-    const secs = Math.floor((Date.now() - S.startedAt) / 1000);
-    disp.textContent = fmtTime(secs);
-    dial.style.transform = "translate(-50%,0) rotate(" + (secs % 60) * 6 + "deg)";
-  }
-  tick();
-  tickHandle = setInterval(tick, 1000);
-}
-
-async function submitAnswer() {
-  const ta = document.getElementById("answerText");
-  const text = ta.value.trim();
-  if (!text) return;
-  S.saving = true;
-  const submitBtn = document.getElementById("submitBtn");
-  if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = "Đang nộp..."; }
-
-  const seconds = Math.floor((Date.now() - S.startedAt) / 1000);
-  const doc = S.sessionDoc || { name: S.name, startedAt: new Date().toISOString(), answers: {}, completed: false };
-  doc.answers = doc.answers || {};
-  doc.answers[S.currentQ] = { question: QUESTIONS[S.currentQ - 1], text: text, seconds: seconds };
-  const isLast = S.currentQ === QUESTIONS.length;
-  if (isLast) { doc.completed = true; doc.completedAt = new Date().toISOString(); }
-
-  try {
-    await fbPut("sessions/" + S.sessionId, doc);
-    S.sessionDoc = doc;
-    S.saving = false;
-    if (isLast) {
-      if (tickHandle) clearInterval(tickHandle);
-      S.view = "thanks";
-    } else {
-      S.currentQ += 1;
-      S.startedAt = Date.now();
-    }
-    render();
-  } catch (e) {
-    S.saving = false;
-    S.saveError = "Không nộp được câu trả lời. Vui lòng thử lại.";
-    render();
-  }
-}
-
-function renderThanks() {
-  document.getElementById("app").innerHTML =
-    '<div class="wrap"><div class="card" style="text-align:center;">' +
-    '<div style="width:40px;height:40px;border-radius:50%;border:1.5px solid var(--gold);margin:0 auto 18px;display:flex;align-items:center;justify-content:center;color:var(--gold);font-family:\'IBM Plex Mono\',monospace;">✓</div>' +
-    "<h2>Cảm ơn " + escapeHtml(S.name) + "</h2>" +
-    "<p>Cậu đã hoàn tất cả 6 câu. Câu trả lời đã được gửi đi và cậu sẽ không xem lại được nội dung mình vừa viết — chỉ người tạo khảo sát mới xem được.</p>" +
-    "</div></div>";
-}
-
-function renderAdminLogin() {
-  document.getElementById("app").innerHTML =
-    '<div class="wrap"><div class="card" style="max-width:380px;">' +
-    "<h2>Khu vực người tạo</h2>" +
-    '<input id="pwInput" type="password" placeholder="Mật khẩu" />' +
-    (S.pwError ? '<p class="err">' + escapeHtml(S.pwError) + "</p>" : "") +
-    '<div class="row" style="gap:10px;margin-top:16px;">' +
-    '<button id="backBtn" style="flex:1;padding:10px 0;background:none;border:1px solid var(--paper-line);color:var(--ink-soft);">Quay lại</button>' +
-    '<button id="loginBtn" style="flex:1;padding:10px 0;background:var(--ink);color:#FFFDF8;font-weight:600;">Vào xem</button>' +
-    "</div></div></div>";
-  document.getElementById("backBtn").addEventListener("click", () => { S.view = "landing"; render(); });
-  document.getElementById("loginBtn").addEventListener("click", tryAdminLogin);
-  document.getElementById("pwInput").addEventListener("keydown", (e) => { if (e.key === "Enter") tryAdminLogin(); });
-}
-
-function tryAdminLogin() {
-  const pw = document.getElementById("pwInput").value;
-  if (pw === ADMIN_PASSWORD) {
-    S.pwError = "";
-    S.view = "admin";
-    render();
-    loadAdminData();
-  } else {
-    S.pwError = "Sai mật khẩu.";
-    render();
-  }
-}
-
-async function loadAdminData() {
-  S.loadingAdmin = true;
-  render();
-  try {
-    const data = await fbGet("sessions");
-    const loaded = [];
-    if (data) {
-      for (const key of Object.keys(data)) {
-        loaded.push({ key, ...data[key] });
-      }
-    }
-    loaded.sort((a, b) => new Date(b.startedAt) - new Date(a.startedAt));
-    S.sessions = loaded;
-    S.pwError = "";
-  } catch (e) {
-    S.pwError = "Không tải được dữ liệu. Thử lại sau.";
-  } finally {
-    S.loadingAdmin = false;
-    render();
-  }
-}
-
-function renderAdmin() {
-  let sessionsHtml = "";
-  if (S.loadingAdmin) {
-    sessionsHtml = '<p style="color:#F7F2E7;">Đang tải...</p>';
-  } else if (S.sessions.length === 0) {
-    sessionsHtml = '<p class="muted-note">Chưa có ai làm khảo sát.</p>';
-  } else {
-    sessionsHtml = S.sessions.map((s) => {
-      const isOpen = S.openSession === s.key;
-      const answeredCount = Object.keys(s.answers || {}).length;
-      let body = "";
-      if (isOpen) {
-        body = '<div class="session-body">' + QUESTIONS.map((q, i) => {
-          const ans = (s.answers || {})[i + 1];
-          return '<div class="qa"><div class="qa-head"><span class="qtag">Câu ' + (i + 1) + "</span>" +
-            (ans ? '<span style="font-size:12px;color:var(--ink-soft);font-family:\'IBM Plex Mono\',monospace;">' + fmtTime(ans.seconds) + "</span>" : "") +
-            '</div><p class="qa-text">' + (ans ? escapeHtml(ans.text) : '<em style="color:#B9B4A6;">(chưa trả lời)</em>') + "</p></div>";
-        }).join("") + "</div>";
-      }
-      return '<div class="session">' +
-        '<button class="session-head" data-key="' + s.key + '">' +
-        '<div><div class="session-name">' + escapeHtml(s.name || "(không tên)") + "</div>" +
-        '<div class="session-meta">' + fmtDate(s.startedAt) + " · " + answeredCount + "/" + QUESTIONS.length + " câu" +
-        (s.completed ? " · đã hoàn tất" : " · đang làm / bỏ dở") + "</div></div>" +
-        '<span style="color:var(--gold);font-family:\'IBM Plex Mono\',monospace;font-size:13px;">' + (isOpen ? "− ẩn" : "+ xem") + "</span>" +
-        "</button>" + body + "</div>";
-    }).join("");
-  }
-
-  document.getElementById("app").innerHTML =
-    '<div class="admin-wrap"><div class="admin-inner">' +
-    '<div class="admin-top"><h2>Kết quả khảo sát</h2>' +
-    '<div style="display:flex;gap:10px;">' +
-    '<button class="btn-outline" id="reloadBtn">Tải lại</button>' +
-    '<button class="btn-outline muted" id="exitBtn">Thoát</button>' +
-    "</div></div>" +
-    (S.pwError ? '<p style="color:#e08a75;">' + escapeHtml(S.pwError) + "</p>" : "") +
-    sessionsHtml +
-    "</div></div>";
-
-  document.getElementById("reloadBtn").addEventListener("click", loadAdminData);
-  document.getElementById("exitBtn").addEventListener("click", () => { S.view = "landing"; render(); });
-  document.querySelectorAll(".session-head").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const key = btn.getAttribute("data-key");
-      S.openSession = S.openSession === key ? null : key;
-      render();
-    });
-  });
-}
-
-render();
-</script>
+                    <div class="blockquote" style="background: #fff; border-color: #ffa39e;">
+                        <strong>Tóm lại là:</strong> "Điểm xấu" lớn nhất của Trâm Anh không phải là gây hại cho ai, mà là cậu đang tự làm khó và tự làm đau chính mình nhiều nhất. Cậu ôm đồm quá nhiều cảm xúc, giữ quá nhiều chuyện cũ và hơi thiếu một chút sự "vô tư, phớt lờ" để cuộc sống nhẹ nhàng hơn. Chút gai góc này có làm cậu thấy giống mình ở ngoài đời không?
+                    </div>
+                </div>
+            `;
+            document.getElementById('resultContent').innerHTML = contentHTML;
+        }
+    </script>
 </body>
 </html>
