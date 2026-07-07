@@ -158,7 +158,7 @@ function renderLanding() {
     '<div style="text-align:center;margin-top:22px;"><button class="btn-ghost" id="adminBtn">Dành cho người tạo khảo sát</button></div>' +
     "</div></div>";
 
-  document.getElementById("nameInput").addEventListener("input", (e) => (S.name = e.target.value));
+  document.getElementById("nameInput").addEventListener("input", (e) => { S.name = e.target.value; updateStartBtnState(); });
   document.getElementById("nameInput").addEventListener("keydown", (e) => { if (e.key === "Enter") beginSurvey(); });
   document.getElementById("startBtn").addEventListener("click", beginSurvey);
   document.getElementById("adminBtn").addEventListener("click", () => { S.view = "admin-login"; render(); });
